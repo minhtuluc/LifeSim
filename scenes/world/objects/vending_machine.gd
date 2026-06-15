@@ -8,6 +8,6 @@ func _ready() -> void:
 	interactable_area.interacted.connect(_on_interacted)
 
 func _on_interacted(_user: Node) -> void:
-	var shop_ui = get_tree().get_first_node_in_group("shop_ui")
+	var shop_ui: Node = get_tree().get_first_node_in_group("shop_ui")
 	if shop_ui:
 		shop_ui.open_shop(items_for_sale)

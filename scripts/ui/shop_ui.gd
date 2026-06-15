@@ -5,7 +5,7 @@ extends PanelContainer
 @onready var close_btn: Button = %CloseButton
 
 var current_items: Array[ItemData] = []
-var player_inventory: InventoryComponent
+var current_money: int = 0
 
 func _ready() -> void:
 	add_to_group("shop_ui")
@@ -14,10 +14,11 @@ func _ready() -> void:
 	item_list.item_selected.connect(_on_item_selected)
 	hide()
 	
-	await get_tree().process_frame
-	var player = get_tree().get_first_node_in_group("player")
-	if player and player.has_node("InventoryComponent"):
-		player_inventory = player.get_node("InventoryComponent")
+	EventBus.player_money_changed.connect(_on_player_money_changed)
+	current_money = GameManager.money
+
+func _on_player_money_changed(new_amount: int, _delta: int) -> void:
+	current_money = new_amount
 
 func open_shop(items: Array[ItemData]) -> void:
 	current_items = items
@@ -31,16 +32,12 @@ func _on_item_selected(_index: int) -> void:
 	buy_btn.disabled = false
 
 func _on_buy_pressed() -> void:
-	var selected = item_list.get_selected_items()
+	var selected: PackedInt32Array = item_list.get_selected_items()
 	if selected.size() > 0:
-		var index = selected[0]
-		var item = current_items[index]
+		var index: int = selected[0]
+		var item: ItemData = current_items[index]
 		
-		# Kiểm tra tiền
-		if GameManager.money >= item.base_price:
-			if player_inventory and player_inventory.add_item(item):
-				GameManager.change_money(-item.base_price)
-			else:
-				print("Túi đồ đầy!")
+		if current_money >= item.base_price:
+			EventBus.ui_purchase_requested.emit(item)
 		else:
 			print("Không đủ tiền!")

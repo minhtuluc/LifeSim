@@ -39,9 +39,9 @@ signal quest_completed(quest_id: StringName)
 signal quest_failed(quest_id: StringName)
 
 # --- SAVE ---
-signal save_requested()
+signal save_requested(save_data: Dictionary)
 signal save_completed(success: bool)
-signal load_completed(success: bool)
+signal load_completed(load_data: Dictionary)
 
 # --- UI (từ UI lên backend) ---
 signal ui_purchase_requested(item_data: Resource)

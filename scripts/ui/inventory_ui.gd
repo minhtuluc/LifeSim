@@ -15,7 +15,7 @@ func _ready() -> void:
 	
 	# Đợi 1 frame để đảm bảo Player đã spawn
 	await get_tree().process_frame
-	var player = get_tree().get_first_node_in_group("player")
+	var player: Node = get_tree().get_first_node_in_group("player")
 	if player and player.has_node("InventoryComponent"):
 		setup(player.get_node("InventoryComponent"))
 
@@ -41,7 +41,7 @@ func _refresh_ui() -> void:
 	if not inventory:
 		return
 		
-	var items = inventory.get_items()
+	var items: Array[ItemData] = inventory.get_items()
 	for item in items:
 		item_list.add_item(item.display_name, item.icon)
 	
@@ -55,7 +55,7 @@ func _on_item_activated(index: int) -> void:
 		inventory.consume_item(index)
 
 func _on_consume_pressed() -> void:
-	var selected = item_list.get_selected_items()
+	var selected: PackedInt32Array = item_list.get_selected_items()
 	if selected.size() > 0:
-		var index = selected[0]
+		var index: int = selected[0]
 		inventory.consume_item(index)

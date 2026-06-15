@@ -17,6 +17,6 @@ func _ready() -> void:
 	_on_time_tick(TimeManager.current_hour, TimeManager.current_minute)
 
 func _on_time_tick(hour: int, minute: int) -> void:
-	var float_hour = hour + (minute / 60.0)
-	var time_ratio = float_hour / 24.0
+	var float_hour: float = hour + (minute / 60.0)
+	var time_ratio: float = float_hour / 24.0
 	color = gradient.sample(time_ratio)

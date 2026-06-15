@@ -7,8 +7,9 @@ func _ready() -> void:
 
 func _on_interacted(_user: Node) -> void:
 	# Tính toán số giờ cần ngủ để đến 6h sáng hôm sau
-	var hours_to_skip = 0
-	if TimeManager.current_hour >= 6:
+	var hours_to_skip: int = 0
+	
+	if TimeManager.current_hour >= 22:
 		hours_to_skip = (24 - TimeManager.current_hour) + 6
 	else:
 		hours_to_skip = 6 - TimeManager.current_hour

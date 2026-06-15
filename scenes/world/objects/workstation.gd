@@ -7,13 +7,12 @@ func _ready() -> void:
 
 func _on_interacted(_user: Node) -> void:
 	# Nếu Energy quá thấp thì không cho làm việc
-	if NeedsManager.energy < 20.0:
-		print("Quá mệt, không thể làm việc!")
-		return
-		
-	var hours = 2
-	var energy_cost = 25.0
-	var money_earned = 80
+	var hours: int = 2
+	var energy_cost: float = 25.0
+	var money_earned: int = 80
 	
-	TimeManager.skip_time(hours)
-	EventBus.player_worked.emit(hours, energy_cost, money_earned)
+	if NeedsManager.energy >= energy_cost:
+		TimeManager.skip_time(hours)
+		EventBus.player_worked.emit(hours, energy_cost, money_earned)
+	else:
+		print("Quá mệt, không thể làm việc!")

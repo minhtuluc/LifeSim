@@ -20,6 +20,27 @@ func _ready() -> void:
 	EventBus.player_slept.connect(_on_player_slept)
 	EventBus.player_worked.connect(_on_player_worked)
 	EventBus.player_ate_food.connect(_on_player_ate_food)
+	EventBus.save_requested.connect(_on_save_requested)
+	EventBus.load_completed.connect(_on_load_completed)
+
+func _on_save_requested(save_data: Dictionary) -> void:
+	save_data["needs"] = {
+		"hunger": hunger,
+		"energy": energy,
+		"mood": mood,
+		"hygiene": hygiene,
+		"social": social
+	}
+
+func _on_load_completed(load_data: Dictionary) -> void:
+	if load_data.has("needs"):
+		var n: Dictionary = load_data["needs"] as Dictionary
+		hunger = float(n["hunger"])
+		energy = float(n["energy"])
+		mood = float(n["mood"])
+		hygiene = float(n["hygiene"])
+		social = float(n["social"])
+		EventBus.needs_all_updated.emit(hunger, energy, mood, hygiene, social)
 
 func _on_player_ate_food(food: Resource) -> void:
 	var item = food as ItemData

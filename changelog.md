@@ -82,3 +82,11 @@
 - Hàm `load_game()`: Đọc JSON và phục hồi trạng thái (kèm việc gán signal ép UI update theo thông số mới).
 - Gán phím tắt: `F5` = Quicksave, `F9` = Quickload.
 ---
+
+**Thời gian:** 2026-06-16 02:51
+**Phase/Module:** Refactor / T-FIX-001
+**Thay đổi chính:**
+- Fix Rule 1: Chuyển Save/Load sang Event Sourcing. `SaveManager` không gọi trực tiếp các biến của Autoload khác nữa mà dùng `save_data` Dictionary truyền qua EventBus.
+- Fix Rule 2: Reactive UI cho `shop_ui.gd` (không gọi trực tiếp `change_money`, chỉ emit signal `ui_purchase_requested`).
+- Chuẩn hóa Static Typing 100% cho tất cả các biến toàn cục và cục bộ.
+---

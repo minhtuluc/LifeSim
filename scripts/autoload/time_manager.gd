@@ -26,6 +26,28 @@ func _ready() -> void:
 	current_hour = start_hour
 	current_day = start_day
 	current_season = start_season
+	EventBus.save_requested.connect(_on_save_requested)
+	EventBus.load_completed.connect(_on_load_completed)
+
+func _on_save_requested(save_data: Dictionary) -> void:
+	save_data["time"] = {
+		"hour": current_hour,
+		"minute": current_minute,
+		"day": current_day,
+		"season": current_season,
+		"total_days": total_days_elapsed
+	}
+
+func _on_load_completed(load_data: Dictionary) -> void:
+	if load_data.has("time"):
+		var t: Dictionary = load_data["time"] as Dictionary
+		current_hour = int(t["hour"])
+		current_minute = int(t["minute"])
+		current_day = int(t["day"])
+		current_season = int(t["season"])
+		total_days_elapsed = int(t["total_days"])
+		EventBus.time_hour_changed.emit(current_hour)
+		EventBus.time_tick.emit(current_hour, current_minute)
 
 func _process(delta: float) -> void:
 	if _is_paused:

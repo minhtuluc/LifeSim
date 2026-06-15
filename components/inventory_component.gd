@@ -6,6 +6,27 @@ signal inventory_changed
 @export var max_slots: int = 16
 var items: Array[ItemData] = []
 
+func _ready() -> void:
+	EventBus.save_requested.connect(_on_save_requested)
+	EventBus.load_completed.connect(_on_load_completed)
+
+func _on_save_requested(save_data: Dictionary) -> void:
+	var inv_data: Array = []
+	for item in items:
+		inv_data.append(item.resource_path)
+	save_data["inventory"] = inv_data
+
+func _on_load_completed(load_data: Dictionary) -> void:
+	if load_data.has("inventory"):
+		var inv_data: Array = load_data["inventory"] as Array
+		items.clear()
+		for path in inv_data:
+			var path_str: String = path as String
+			var item: Resource = load(path_str)
+			if item and item is ItemData:
+				items.append(item as ItemData)
+		inventory_changed.emit()
+
 func add_item(item: ItemData) -> bool:
 	if items.size() < max_slots:
 		items.append(item)
