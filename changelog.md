@@ -36,3 +36,12 @@
 - Đăng ký Autoloads `TimeManager` và `NeedsManager` vào `project.godot` theo thứ tự quy định.
 - Cập nhật tạm thời `main.gd` để test time tick & needs decay.
 ---
+
+**Thời gian:** 2026-06-16 01:45
+**Phase/Module:** Phase 1 / T-003 Player Scene & Basic World
+**Thay đổi chính:**
+- Tạo `MovementComponent` để tách biệt logic di chuyển vật lý (Composition pattern).
+- Tạo Player scene (`CharacterBody2D`) với `PlayerController` hỗ trợ di chuyển 8 hướng bằng WASD.
+- Tạo `home_village.tscn` làm scene thế giới cơ bản có gắn tường (StaticBody2D) để test va chạm.
+- Chuyển Main Scene từ `main.tscn` sang `home_village.tscn`.
+---
