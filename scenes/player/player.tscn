@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxab1"]
+[gd_scene format=3 uid="uid://cxab1"]
 
 [ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1_player"]
 [ext_resource type="Script" path="res://components/movement_component.gd" id="2_move"]
@@ -25,4 +25,3 @@ shape = SubResource("RectangleShape2D_player")
 script = ExtResource("2_move")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true

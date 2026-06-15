@@ -45,3 +45,13 @@
 - Tạo `home_village.tscn` làm scene thế giới cơ bản có gắn tường (StaticBody2D) để test va chạm.
 - Chuyển Main Scene từ `main.tscn` sang `home_village.tscn`.
 ---
+
+**Thời gian:** 2026-06-16 01:50
+**Phase/Module:** Phase 1 / T-004 HUD & i18n Setup
+**Thay đổi chính:**
+- Tạo `translations.csv` chứa các từ khóa cơ bản đa ngôn ngữ (Mùa, Ngày, Tiền, Nhu cầu).
+- Cấu hình lại `main.tscn` làm root chứa 2 layer riêng biệt: `WorldContainer` (cho các district) và `HUD` (cho UI).
+- Tạo `hud.tscn` hiển thị thông tin thời gian, tiền bạc, và 5 thanh trạng thái sinh lý (`ProgressBar`).
+- Thêm logic `hud.gd` tuân thủ nguyên tắc Reactive UI: chỉ cập nhật giao diện khi có signal từ `EventBus`, không tự can thiệp thay đổi Data.
+- Xóa file test cũ `main.gd`.
+---
