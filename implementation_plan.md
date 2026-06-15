@@ -525,28 +525,28 @@ game/
 ### Phase 1: Foundation 🏗️ *(Bắt đầu ngay)*
 > Mục tiêu: Nhân vật di chuyển trong thế giới, có chu kỳ ngày/đêm và hệ thống nhu cầu cơ bản
 
-- [ ] Setup Godot 4 project + Git repo + `.gitignore`
-- [ ] Cấu hình viewport 480×270, pixel perfect rendering
-- [ ] `EventBus.gd` — Signal hub cho toàn bộ hệ thống
-- [ ] `TimeManager.gd` — Đồng hồ, ngày, tuần (T2-CN), mùa, năm (28 ngày/mùa)
-- [ ] `NeedsManager.gd` — 5 chỉ số nhu cầu (Mood, Energy, Hunger, Hygiene, Social)
-- [ ] Player scene — Di chuyển 8 hướng (WASD), tương tác (E + Click)
-- [ ] TileMap cơ bản — 1 district đơn giản (home_village hoặc city_residential)
-- [ ] Camera follow player
-- [ ] HUD — Giờ, ngày/thứ, mùa, 5 thanh nhu cầu, tiền
-- [ ] Hiệu ứng ánh sáng ngày/đêm
-- [ ] i18n setup — Translation system cơ bản (`tr()` function, `en.csv` + `vi.csv`)
+- [x] Setup Godot 4 project + Git repo + `.gitignore`
+- [x] Cấu hình viewport 480×270, pixel perfect rendering
+- [x] `EventBus.gd` — Signal hub cho toàn bộ hệ thống
+- [x] `TimeManager.gd` — Đồng hồ, ngày, tuần (T2-CN), mùa, năm (28 ngày/mùa)
+- [x] `NeedsManager.gd` — 5 chỉ số nhu cầu (Mood, Energy, Hunger, Hygiene, Social)
+- [x] Player scene — Di chuyển 8 hướng (WASD), tương tác (E + Click)
+- [x] TileMap cơ bản — 1 district đơn giản (home_village hoặc city_residential)
+- [x] Camera follow player
+- [x] HUD — Giờ, ngày/thứ, mùa, 5 thanh nhu cầu, tiền
+- [x] Hiệu ứng ánh sáng ngày/đêm
+- [x] i18n setup — Translation system cơ bản (`tr()` function, `en.csv` + `vi.csv`)
 
 ### Phase 2: Life Simulation Core 🧑‍💼
 > Mục tiêu: Có thể kiếm tiền, ăn uống, ngủ nghỉ — vòng lặp sinh tồn cơ bản
 
 - [ ] `JobManager.gd` — Hệ thống việc làm (2-3 job Tier 1)
-- [ ] `EconomyManager.gd` — Tiền, mua/bán cơ bản
-- [ ] Housing cơ bản — Thuê phòng trọ vs ngủ ngoài trời
-- [ ] Cửa hàng thực phẩm — Mua đồ ăn
-- [ ] Hệ thống ăn uống → ảnh hưởng Hunger, Energy
-- [ ] Hệ thống ngủ → kết thúc ngày, phục hồi Energy
-- [ ] Inventory cơ bản — Toolbar + Backpack
+- [x] `EconomyManager.gd` — Tiền, mua/bán cơ bản (Được gộp vào GameManager)
+- [x] Housing cơ bản — Thuê phòng trọ vs ngủ ngoài trời
+- [x] Cửa hàng thực phẩm — Mua đồ ăn
+- [x] Hệ thống ăn uống → ảnh hưởng Hunger, Energy
+- [x] Hệ thống ngủ → kết thúc ngày, phục hồi Energy
+- [x] Inventory cơ bản — Toolbar + Backpack
 
 ### Phase 3: Social Foundation 👥
 > Mục tiêu: NPC sống động, nói chuyện được, tặng quà, bắt đầu xây dựng quan hệ
@@ -592,7 +592,7 @@ game/
 - [ ] Thêm thị trấn/vùng đất mới
 - [ ] Jobs Tier 4 — Tự kinh doanh
 - [ ] Full audio (BGM + SFX)
-- [ ] Save/Load hoàn chỉnh
+- [x] Save/Load hoàn chỉnh
 - [ ] Main menu, character creator
 - [ ] Balancing & Playtesting
 - [ ] Performance optimization

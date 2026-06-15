@@ -220,15 +220,24 @@ TICKET-007 (i18n Setup) ← độc lập, chạy song song bất kỳ lúc nào
 
 ### Ticket summary:
 
-| ID | Module | Dependency | Song song? | Ước tính |
+| ID | Module | Dependency | Trạng thái | Ước tính |
 |---|---|---|---|---|
-| **T-001** | Project Setup + EventBus + GameManager | Không | Làm đầu tiên | 30 phút |
-| **T-002** | TimeManager | T-001 | Không | 1-2 giờ |
-| **T-003** | Player + Camera + MovementComponent + FSM | T-001 | Song song T-002 | 2-3 giờ |
-| **T-004** | NeedsManager (5 stats + decay logic) | T-001, T-002 | Song song T-003 | 1-2 giờ |
-| **T-005** | HUD (Time display + Needs bars + Money) | T-002, T-004 | Không | 1-2 giờ |
-| **T-006** | TileMap District + Day/Night lighting | T-003 | Không | 2-3 giờ |
-| **T-007** | i18n Setup (CSV + tr() pattern) | T-001 | Song song bất kỳ | 30 phút |
+| **T-001** | Project Setup + EventBus + GameManager | Không | ✅ Xong | 30 phút |
+| **T-002** | TimeManager | T-001 | ✅ Xong | 1-2 giờ |
+| **T-003** | Player + Camera + MovementComponent + FSM | T-001 | ✅ Xong | 2-3 giờ |
+| **T-004** | NeedsManager (5 stats + decay logic) | T-001, T-002 | ✅ Xong | 1-2 giờ |
+| **T-005** | HUD (Time display + Needs bars + Money) | T-002, T-004 | ✅ Xong | 1-2 giờ |
+| **T-006** | TileMap District + Day/Night lighting | T-003 | ✅ Xong | 2-3 giờ |
+| **T-007** | i18n Setup (CSV + tr() pattern) | T-001 | ✅ Xong | 30 phút |
+| **T-FIX-001** | Architecture Refactoring (Save system, Reactive UI, Typings) | Các module đã code | ✅ Xong | 1-2 giờ |
+
+---
+
+## 6.1 PHASE 3 TASK BREAKDOWN — Social Foundation
+
+| ID | Module | Trạng thái | Ước tính |
+|---|---|---|---|
+| **T-008** | NPCBase & Dialogue System | ⏳ Chờ Agent làm | 2-3 giờ |
 
 ### Execution order khuyến nghị:
 ```
