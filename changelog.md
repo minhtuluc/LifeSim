@@ -90,3 +90,12 @@
 - Fix Rule 2: Reactive UI cho `shop_ui.gd` (không gọi trực tiếp `change_money`, chỉ emit signal `ui_purchase_requested`).
 - Chuẩn hóa Static Typing 100% cho tất cả các biến toàn cục và cục bộ.
 ---
+
+**Thời gian:** 2026-06-16 03:06
+**Phase/Module:** 3 / T-008
+**Thay đổi chính:**
+- Tạo Resource `DialogueData` để lưu trữ kịch bản hội thoại.
+- Xây dựng `NPCBase` với `InteractableArea` để kích hoạt hội thoại.
+- Xây dựng `DialogueUI` theo kiến trúc Reactive, tự động đọc thoại khi nhận signal `npc_dialogue_started`.
+- `PlayerController` tự động khoá di chuyển khi đang trong hội thoại thông qua EventBus.
+---

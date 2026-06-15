@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://data/dialogues/dialogue_data.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="2_icon"]
+
+[resource]
+script = ExtResource("1_script")
+npc_name = "Trưởng làng"
+portrait = ExtResource("2_icon")
+lines = Array[String](["Xin chào cậu trai trẻ!", "Mừng cậu đến với LifeSim.", "Hãy làm việc chăm chỉ nhé!"])
