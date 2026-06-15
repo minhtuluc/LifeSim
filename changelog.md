@@ -27,3 +27,12 @@
 - Tạo root scene `scenes/main/main.tscn`.
 - Init Git.
 ---
+
+**Thời gian:** 2026-06-16 01:40
+**Phase/Module:** Phase 1 / T-002 Time & Needs Management
+**Thay đổi chính:**
+- Tạo `TimeManager`: quản lý đồng hồ nội tại, phát signal `time_tick`, `time_hour_changed`, `time_day_changed`, `time_season_changed`.
+- Tạo `NeedsManager`: quản lý 5 nhu cầu (Hunger, Energy, Mood, Hygiene, Social), decay theo giờ, phát signal `needs_updated` và `player_need_critical`.
+- Đăng ký Autoloads `TimeManager` và `NeedsManager` vào `project.godot` theo thứ tự quy định.
+- Cập nhật tạm thời `main.gd` để test time tick & needs decay.
+---
