@@ -16,3 +16,14 @@
 - (Ghi chú cảnh báo nếu có ảnh hưởng hệ thống khác)
 ---
 
+**Thời gian:** 2026-06-16 01:30
+**Phase/Module:** Phase 1 / T-001 Project Setup
+**Thay đổi chính:**
+- Khởi tạo dự án Godot 4 (project.godot, .gitignore).
+- Tạo cấu trúc thư mục (có `.gdkeep` files).
+- Tạo `scripts/autoload/event_bus.gd` với đầy đủ signal groups.
+- Tạo `scripts/autoload/game_manager.gd` với logic tiền tệ.
+- Đăng ký Autoloads (EventBus -> GameManager).
+- Tạo root scene `scenes/main/main.tscn`.
+- Init Git.
+---
