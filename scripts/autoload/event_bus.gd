@@ -23,8 +23,8 @@ signal npc_despawned(npc_id: StringName)
 signal npc_schedule_changed(npc_id: StringName, new_activity: StringName)
 signal npc_path_failed(npc_id: StringName)
 signal npc_path_ready(npc_id: StringName, path: PackedVector2Array)
-signal npc_dialogue_started(npc_id: StringName)
-signal npc_dialogue_ended(npc_id: StringName, outcome: Dictionary)
+signal npc_dialogue_started(dialogue_data: Resource)
+signal npc_dialogue_ended()
 
 # --- SCENE / DISTRICT ---
 signal scene_transition_requested(target_district: StringName)

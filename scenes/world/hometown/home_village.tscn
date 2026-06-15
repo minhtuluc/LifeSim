@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://workstationscene" path="res://scenes/world/objects/workstation.tscn" id="3_workstation"]
 [ext_resource type="PackedScene" uid="uid://vendingmachine123" path="res://scenes/world/objects/vending_machine.tscn" id="4_vending_machine"]
 [ext_resource type="PackedScene" uid="uid://daynightcycle" path="res://components/day_night_cycle.tscn" id="5_day_night"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc_base.tscn" id="6_npc"]
+[ext_resource type="Resource" path="res://data/dialogues/test_dialogue.tres" id="7_dialogue"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
 size = Vector2(100, 100)
@@ -58,3 +60,7 @@ position = Vector2(-100, -80)
 position = Vector2(0, -150)
 
 [node name="DayNightCycle" parent="." instance=ExtResource("5_day_night")]
+
+[node name="TestNPC" parent="." instance=ExtResource("6_npc")]
+position = Vector2(0, 100)
+dialogue_data = ExtResource("7_dialogue")
