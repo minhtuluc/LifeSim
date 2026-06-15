@@ -14,6 +14,8 @@ signal player_moved(new_position: Vector2)
 signal player_ate_food(food_data: Resource)
 signal player_money_changed(new_amount: int, delta: int)
 signal player_need_critical(need_type: int)
+signal player_slept(hours: int)
+signal player_worked(hours: int, energy_cost: float, money_earned: int)
 
 # --- NPC ---
 signal npc_spawned(npc_id: StringName, npc_ref: Node)

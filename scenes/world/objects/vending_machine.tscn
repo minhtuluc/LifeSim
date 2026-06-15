@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://wuiom4auao5w"]
+
+[ext_resource type="Script" path="res://scenes/world/objects/vending_machine.gd" id="1_script"]
+[ext_resource type="Script" path="res://components/interactable_area.gd" id="2_interactable"]
+[ext_resource type="Resource" uid="uid://breaditem123" path="res://data/items/bread.tres" id="3_bread"]
+[ext_resource type="Resource" uid="uid://coffeeitem123" path="res://data/items/coffee.tres" id="4_coffee"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interact"]
+size = Vector2(32, 64)
+
+[node name="VendingMachine" type="Node2D"]
+script = ExtResource("1_script")
+items_for_sale = Array[Resource("res://data/items/item_data.gd")]([ExtResource("3_bread"), ExtResource("4_coffee")])
+
+[node name="Visual" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 16.0
+offset_bottom = 32.0
+color = Color(0.8, 0.2, 0.2, 1.0)
+
+[node name="InteractableArea" type="Area2D" parent="."]
+script = ExtResource("2_interactable")
+prompt_text = "Mua đồ (Máy bán hàng)"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_interact")

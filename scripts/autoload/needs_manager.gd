@@ -17,6 +17,29 @@ var social: float = 100.0
 
 func _ready() -> void:
 	EventBus.time_hour_changed.connect(_on_time_hour_changed)
+	EventBus.player_slept.connect(_on_player_slept)
+	EventBus.player_worked.connect(_on_player_worked)
+	EventBus.player_ate_food.connect(_on_player_ate_food)
+
+func _on_player_ate_food(food: Resource) -> void:
+	var item = food as ItemData
+	if not item: return
+	
+	_add_to_need(NeedType.HUNGER, item.hunger_restore)
+	_add_to_need(NeedType.ENERGY, item.energy_restore)
+	_add_to_need(NeedType.MOOD, item.mood_restore)
+	_add_to_need(NeedType.HYGIENE, item.hygiene_restore)
+	_add_to_need(NeedType.SOCIAL, item.social_restore)
+	EventBus.needs_all_updated.emit(hunger, energy, mood, hygiene, social)
+
+func _on_player_slept(_hours: int) -> void:
+	_add_to_need(NeedType.ENERGY, 100.0)
+	_add_to_need(NeedType.MOOD, 50.0)
+	EventBus.needs_all_updated.emit(hunger, energy, mood, hygiene, social)
+
+func _on_player_worked(_hours: int, energy_cost: float, _money_earned: int) -> void:
+	_add_to_need(NeedType.ENERGY, -energy_cost)
+	EventBus.needs_all_updated.emit(hunger, energy, mood, hygiene, social)
 
 func _on_time_hour_changed(_new_hour: int) -> void:
 	_decay_needs()

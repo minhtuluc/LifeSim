@@ -3,13 +3,13 @@
 extends CanvasLayer
 class_name HUD
 
-@onready var time_label: Label = $MarginContainer/VBoxContainer/TopBar/TimeLabel
-@onready var money_label: Label = $MarginContainer/VBoxContainer/TopBar/MoneyLabel
-@onready var hunger_bar: ProgressBar = $MarginContainer/VBoxContainer/Needs/HungerBar
-@onready var energy_bar: ProgressBar = $MarginContainer/VBoxContainer/Needs/EnergyBar
-@onready var mood_bar: ProgressBar = $MarginContainer/VBoxContainer/Needs/MoodBar
-@onready var hygiene_bar: ProgressBar = $MarginContainer/VBoxContainer/Needs/HygieneBar
-@onready var social_bar: ProgressBar = $MarginContainer/VBoxContainer/Needs/SocialBar
+@onready var time_label: Label = %TimeLabel
+@onready var money_label: Label = %MoneyLabel
+@onready var hunger_bar: ProgressBar = %HungerBar
+@onready var energy_bar: ProgressBar = %EnergyBar
+@onready var mood_bar: ProgressBar = %MoodBar
+@onready var hygiene_bar: ProgressBar = %HygieneBar
+@onready var social_bar: ProgressBar = %SocialBar
 
 func _ready() -> void:
 	# Kết nối signal

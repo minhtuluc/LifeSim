@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://abcde123" path="res://scenes/world/hometown/home_village.tscn" id="1_world"]
 [ext_resource type="PackedScene" uid="uid://u1234abcd" path="res://scenes/ui/hud.tscn" id="2_hud"]
+[ext_resource type="PackedScene" uid="uid://inventoryui123" path="res://scenes/ui/inventory_ui.tscn" id="3_inventory"]
+[ext_resource type="PackedScene" uid="uid://shopui123" path="res://scenes/ui/shop_ui.tscn" id="4_shop"]
 
 [node name="Main" type="Node"]
 
@@ -10,3 +12,9 @@
 [node name="HomeVillage" parent="WorldContainer" instance=ExtResource("1_world")]
 
 [node name="HUD" parent="." instance=ExtResource("2_hud")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("3_inventory")]
+
+[node name="ShopUI" parent="CanvasLayer" instance=ExtResource("4_shop")]

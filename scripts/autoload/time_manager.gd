@@ -75,3 +75,7 @@ func pause_time() -> void:
 
 func resume_time() -> void:
 	_is_paused = false
+
+func skip_time(hours: int) -> void:
+	for i in range(hours):
+		_advance_hour()

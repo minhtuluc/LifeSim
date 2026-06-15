@@ -12,8 +12,10 @@ var is_game_paused: bool = false
 var current_district: StringName = &"home_village"
 
 func _ready() -> void:
-	# Lắng nghe EventBus — KHÔNG gọi Manager khác trực tiếp
-	pass
+	EventBus.player_worked.connect(_on_player_worked)
+
+func _on_player_worked(_hours: int, _energy_cost: float, money_earned: int) -> void:
+	change_money(money_earned)
 
 ## Thay đổi tiền — phát signal thông qua EventBus.
 ## delta > 0: nhận tiền. delta < 0: mất tiền.

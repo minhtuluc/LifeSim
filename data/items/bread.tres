@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://breaditem123"]
+
+[ext_resource type="Script" path="res://data/items/item_data.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+item_id = &"bread"
+display_name = "Bánh mì"
+description = "Một ổ bánh mì khô khốc nhưng giúp no bụng."
+base_price = 15
+is_consumable = true
+hunger_restore = 30.0
+energy_restore = 5.0
+mood_restore = 0.0
+hygiene_restore = 0.0
+social_restore = 0.0

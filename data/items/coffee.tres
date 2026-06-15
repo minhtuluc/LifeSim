@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://coffeeitem123"]
+
+[ext_resource type="Script" path="res://data/items/item_data.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+item_id = &"coffee"
+display_name = "Cà phê"
+description = "Giúp bạn tỉnh táo để làm việc tiếp."
+base_price = 25
+is_consumable = true
+hunger_restore = 5.0
+energy_restore = 40.0
+mood_restore = 10.0
+hygiene_restore = -5.0
+social_restore = 0.0

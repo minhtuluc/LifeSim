@@ -55,3 +55,30 @@
 - Thêm logic `hud.gd` tuân thủ nguyên tắc Reactive UI: chỉ cập nhật giao diện khi có signal từ `EventBus`, không tự can thiệp thay đổi Data.
 - Xóa file test cũ `main.gd`.
 ---
+
+**Thời gian:** 2026-06-16 02:15
+**Phase/Module:** Phase 2 / Core Loop (T-005, T-006, T-007)
+**Thay đổi chính:**
+- Tạo `InteractableArea` và `InteractionScanner` cho phép Player bấm `E` tương tác với môi trường.
+- Tạo `Bed` object: Bấm E để ngủ, tua nhanh qua đêm tới 06:00 sáng hôm sau, phục hồi Energy & Mood.
+- Tạo `Workstation` object: Bấm E để làm việc, tốn 2 giờ, trừ 25 Energy, cộng 80 G.
+- Tạo `DayNightCycle` (`CanvasModulate`) đổi màu thế giới tự động theo `TimeManager.current_hour` (Đêm tối, ngày sáng).
+---
+
+**Thời gian:** 2026-06-16 02:25
+**Phase/Module:** Phase 3 / Inventory & Shop (T-008, T-009, T-010)
+**Thay đổi chính:**
+- Thêm resource `ItemData` định nghĩa vật phẩm (Bánh mì, Cà phê) với thông số phục hồi Hunger/Energy.
+- Tạo `InventoryComponent` cho Player và giao diện `InventoryUI` mở bằng phím `I`.
+- Bổ sung `NeedsManager` bắt signal `player_ate_food` để cộng chỉ số khi ăn đồ ăn.
+- Thêm `VendingMachine` trên map. Bấm E để mở `ShopUI`, cho phép mua thức ăn bằng tiền.
+---
+
+**Thời gian:** 2026-06-16 02:30
+**Phase/Module:** Phase 4 / Save & Load System (T-011 -> T-014)
+**Thay đổi chính:**
+- Thêm `SaveManager` vào Autoload (chạy sau cùng).
+- Hàm `save_game()`: Gom data từ TimeManager, GameManager, NeedsManager, InventoryComponent ghi ra `user://savegame.json`.
+- Hàm `load_game()`: Đọc JSON và phục hồi trạng thái (kèm việc gán signal ép UI update theo thông số mới).
+- Gán phím tắt: `F5` = Quicksave, `F9` = Quickload.
+---

@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://bcde123"]
 
 [ext_resource type="PackedScene" uid="uid://cxab1" path="res://scenes/player/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://bedscene" path="res://scenes/world/objects/bed.tscn" id="2_bed"]
+[ext_resource type="PackedScene" uid="uid://workstationscene" path="res://scenes/world/objects/workstation.tscn" id="3_workstation"]
+[ext_resource type="PackedScene" uid="uid://vendingmachine123" path="res://scenes/world/objects/vending_machine.tscn" id="4_vending_machine"]
+[ext_resource type="PackedScene" uid="uid://daynightcycle" path="res://components/day_night_cycle.tscn" id="5_day_night"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
 size = Vector2(100, 100)
@@ -43,3 +47,14 @@ offset_bottom = 50.0
 color = Color(0.4, 0.4, 0.4, 1.0)
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
+
+[node name="Bed" parent="." instance=ExtResource("2_bed")]
+position = Vector2(100, -80)
+
+[node name="Workstation" parent="." instance=ExtResource("3_workstation")]
+position = Vector2(-100, -80)
+
+[node name="VendingMachine" parent="." instance=ExtResource("4_vending_machine")]
+position = Vector2(0, -150)
+
+[node name="DayNightCycle" parent="." instance=ExtResource("5_day_night")]
