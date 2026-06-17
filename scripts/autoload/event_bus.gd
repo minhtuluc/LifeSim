@@ -26,6 +26,13 @@ signal npc_path_ready(npc_id: StringName, path: PackedVector2Array)
 signal npc_dialogue_started(dialogue_data: Resource)
 signal npc_dialogue_ended()
 
+signal npc_friendship_changed(npc_id: StringName, new_amount: int, delta: int)
+signal npc_gift_received(npc_id: StringName, item_data: Resource)
+signal npc_schedule_target_changed(npc_id: StringName, target_position: Vector2, activity: StringName)
+signal ui_npc_interaction_requested(npc_id: StringName, dialogue_data: Resource)
+signal ui_npc_interaction_selected(npc_id: StringName, action_id: StringName)
+signal ui_gift_item_selected(npc_id: StringName, item_index: int)
+
 # --- SCENE / DISTRICT ---
 signal scene_transition_requested(target_district: StringName)
 signal scene_transition_started(from_district: StringName, to_district: StringName)
