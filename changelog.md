@@ -99,3 +99,16 @@
 - Xây dựng `DialogueUI` theo kiến trúc Reactive, tự động đọc thoại khi nhận signal `npc_dialogue_started`.
 - `PlayerController` tự động khoá di chuyển khi đang trong hội thoại thông qua EventBus.
 ---
+
+**Thời gian:** 2026-06-17 20:25
+**Phase/Module:** Phase 3 / T-009 NPC Social Foundation
+**Thay đổi chính:**
+- Tạo `NPCManager` quản lý friendship và save/load NPC social state.
+- Thêm interaction menu cho NPC: nói chuyện và tặng quà.
+- Thêm gift flow qua `EventBus.npc_gift_received` kết hợp `InventoryUI`.
+- Thêm schedule cơ bản cho NPC qua `npc_schedule_target_changed` (`NPCManager` chứa schedule registry).
+- Cập nhật `project.godot` để đăng ký `NPCManager`.
+- Cập nhật `EventBus` với các signal social/schedule mới.
+**Known Issues / Handoff Notes:**
+- Schedule đang xử lý bằng teleport thay vì pathfinding (theo đúng design T-009).
+---

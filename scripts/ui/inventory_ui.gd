@@ -5,12 +5,17 @@ extends PanelContainer
 @onready var close_btn: Button = %CloseButton
 
 var inventory: InventoryComponent
+var _gift_mode: bool = false
+var _gift_npc_id: StringName = &""
 
 func _ready() -> void:
 	consume_btn.pressed.connect(_on_consume_pressed)
-	close_btn.pressed.connect(hide)
+	close_btn.pressed.connect(_hide_ui)
 	item_list.item_activated.connect(_on_item_activated)
 	item_list.item_selected.connect(_on_item_selected)
+	
+	EventBus.ui_npc_interaction_selected.connect(_on_interaction_selected)
+	
 	hide()
 	
 	# Đợi 1 frame để đảm bảo Player đã spawn
@@ -28,11 +33,16 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.physical_keycode == KEY_I:
 			if visible:
-				hide()
+				_hide_ui()
 			else:
 				show()
 				_refresh_ui()
 			get_viewport().set_input_as_handled()
+
+func _hide_ui() -> void:
+	_gift_mode = false
+	_gift_npc_id = &""
+	hide()
 
 func _refresh_ui() -> void:
 	if not is_inside_tree() or not visible:
@@ -46,16 +56,37 @@ func _refresh_ui() -> void:
 		item_list.add_item(item.display_name, item.icon)
 	
 	consume_btn.disabled = true
+	if _gift_mode:
+		consume_btn.text = "Tặng quà"
+	else:
+		consume_btn.text = "Sử dụng"
+
+func _on_interaction_selected(npc_id: StringName, action_id: StringName) -> void:
+	if action_id == &"gift":
+		_gift_mode = true
+		_gift_npc_id = npc_id
+		show()
+		_refresh_ui()
 
 func _on_item_selected(_index: int) -> void:
 	consume_btn.disabled = false
 
-func _on_item_activated(index: int) -> void:
-	if inventory:
+func _use_selected_item(index: int) -> void:
+	if not inventory or index < 0 or index >= inventory.items.size():
+		return
+		
+	if _gift_mode:
+		var item: ItemData = inventory.items[index]
+		EventBus.npc_gift_received.emit(_gift_npc_id, item)
+		inventory.remove_item(index)
+		_hide_ui()
+	else:
 		inventory.consume_item(index)
+
+func _on_item_activated(index: int) -> void:
+	_use_selected_item(index)
 
 func _on_consume_pressed() -> void:
 	var selected: PackedInt32Array = item_list.get_selected_items()
 	if selected.size() > 0:
-		var index: int = selected[0]
-		inventory.consume_item(index)
+		_use_selected_item(selected[0])

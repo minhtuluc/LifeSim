@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://daynightcycle" path="res://components/day_night_cycle.tscn" id="5_day_night"]
 [ext_resource type="PackedScene" path="res://scenes/npcs/npc_base.tscn" id="6_npc"]
 [ext_resource type="Resource" path="res://data/dialogues/test_dialogue.tres" id="7_dialogue"]
+[ext_resource type="Script" path="res://scripts/npcs/npc_schedule_component.gd" id="8_schedule_comp"]
+[ext_resource type="Resource" path="res://data/npcs/test_schedule_8.tres" id="9_sched8"]
+[ext_resource type="Resource" path="res://data/npcs/test_schedule_18.tres" id="10_sched18"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
 size = Vector2(100, 100)
@@ -63,4 +66,9 @@ position = Vector2(0, -150)
 
 [node name="TestNPC" parent="." instance=ExtResource("6_npc")]
 position = Vector2(0, 100)
+npc_id = &"TruongLang"
 dialogue_data = ExtResource("7_dialogue")
+
+[node name="NPCScheduleComponent" type="Node" parent="TestNPC"]
+script = ExtResource("8_schedule_comp")
+entries = Array[Resource("res://data/npcs/schedule_entry.gd")]([ExtResource("9_sched8"), ExtResource("10_sched18")])
