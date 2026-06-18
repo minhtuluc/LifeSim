@@ -1,5 +1,6 @@
+## UI Menu hiện lên khi người chơi tương tác với NPC.
+## Cung cấp các lựa chọn như Nói chuyện, Tặng quà.
 extends Control
-
 @onready var talk_button: Button = %TalkButton
 @onready var gift_button: Button = %GiftButton
 @onready var close_button: Button = %CloseButton

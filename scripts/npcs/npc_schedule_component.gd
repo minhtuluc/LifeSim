@@ -1,3 +1,5 @@
+## Component gắn vào NPC để định nghĩa lịch trình.
+## Tự động đăng ký lịch trình qua EventBus khi khởi tạo.
 extends Node
 class_name NPCScheduleComponent
 
@@ -9,4 +11,4 @@ func _ready() -> void:
 	if parent and "npc_id" in parent:
 		var npc_id: StringName = parent.get("npc_id") as StringName
 		if npc_id != &"":
-			NPCManager.register_schedule(npc_id, entries)
+			EventBus.npc_schedule_registered.emit(npc_id, entries)

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://u1234abcd" path="res://scenes/ui/hud.tscn" id="2_hud"]
 [ext_resource type="PackedScene" uid="uid://inventoryui123" path="res://scenes/ui/inventory_ui.tscn" id="3_inventory"]
 [ext_resource type="PackedScene" uid="uid://shopui123" path="res://scenes/ui/shop_ui.tscn" id="4_shop"]
+[ext_resource type="PackedScene" path="res://scenes/ui/npc_interaction_menu.tscn" id="5_interaction"]
 
 [node name="Main" type="Node"]
 
@@ -18,3 +19,5 @@
 [node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("3_inventory")]
 
 [node name="ShopUI" parent="CanvasLayer" instance=ExtResource("4_shop")]
+
+[node name="NPCInteractionMenu" parent="CanvasLayer" instance=ExtResource("5_interaction")]

@@ -1,3 +1,5 @@
+## Quản lý các trạng thái xã hội của NPC như Friendship, Schedule.
+## Xử lý save/load tự động thông qua EventBus.
 extends Node
 class_name NPCManagerClass
 
@@ -6,13 +8,16 @@ var _schedule_registry: Dictionary = {}
 
 func _ready() -> void:
 	EventBus.npc_gift_received.connect(_on_gift_received)
+	EventBus.npc_schedule_registered.connect(register_schedule)
 	EventBus.save_requested.connect(_on_save_requested)
 	EventBus.load_completed.connect(_on_load_completed)
 	EventBus.time_hour_changed.connect(_on_hour_changed)
 
+## Trả về điểm thân thiết hiện tại của NPC.
 func get_friendship(npc_id: StringName) -> int:
 	return _npc_friendships.get(npc_id, 0)
 
+## Thay đổi điểm thân thiết của NPC. Giá trị được giới hạn từ -100 đến 100.
 func change_friendship(npc_id: StringName, delta: int) -> void:
 	var old_val: int = get_friendship(npc_id)
 	var new_val: int = clampi(old_val + delta, -100, 100)

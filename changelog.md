@@ -112,3 +112,14 @@
 **Known Issues / Handoff Notes:**
 - Schedule đang xử lý bằng teleport thay vì pathfinding (theo đúng design T-009).
 ---
+
+**Thời gian:** 2026-06-18 17:45
+**Phase/Module:** Phase 3 / T-FIX-002 T-009 Review Fixes
+**Thay đổi chính:**
+- Instance `NPCInteractionMenu` vào main scene.
+- Chuyển schedule registration sang EventBus.
+- Chuyển gift item removal từ UI sang InventoryComponent.
+- Bổ sung DocString cho các class/public API mới.
+**Known Issues / Handoff Notes:**
+- Mọi logic đã decoupling hoàn toàn khỏi UI và Component qua EventBus.
+---
