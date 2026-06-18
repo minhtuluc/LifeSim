@@ -72,13 +72,11 @@ func _on_item_selected(_index: int) -> void:
 	consume_btn.disabled = false
 
 func _use_selected_item(index: int) -> void:
-	if not inventory or index < 0 or index >= inventory.items.size():
+	if not inventory:
 		return
 		
 	if _gift_mode:
-		var item: ItemData = inventory.items[index]
-		EventBus.npc_gift_received.emit(_gift_npc_id, item)
-		inventory.remove_item(index)
+		EventBus.ui_gift_item_selected.emit(_gift_npc_id, index)
 		_hide_ui()
 	else:
 		inventory.consume_item(index)

@@ -1,3 +1,4 @@
+## Data resource định nghĩa một mốc lịch trình của NPC.
 extends Resource
 class_name ScheduleEntry
 

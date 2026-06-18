@@ -32,6 +32,7 @@ signal npc_schedule_target_changed(npc_id: StringName, target_position: Vector2,
 signal ui_npc_interaction_requested(npc_id: StringName, dialogue_data: Resource)
 signal ui_npc_interaction_selected(npc_id: StringName, action_id: StringName)
 signal ui_gift_item_selected(npc_id: StringName, item_index: int)
+signal npc_schedule_registered(npc_id: StringName, entries: Array)
 
 # --- SCENE / DISTRICT ---
 signal scene_transition_requested(target_district: StringName)
