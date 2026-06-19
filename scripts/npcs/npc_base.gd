@@ -7,6 +7,7 @@ class_name NPCBase
 @onready var interactable_area: InteractableArea = $InteractableArea
 
 func _ready() -> void:
+	add_to_group("npcs")
 	if interactable_area:
 		interactable_area.interacted.connect(_on_interacted)
 	EventBus.ui_npc_interaction_selected.connect(_on_interaction_selected)

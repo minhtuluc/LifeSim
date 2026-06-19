@@ -123,3 +123,13 @@
 **Known Issues / Handoff Notes:**
 - Mọi logic đã decoupling hoàn toàn khỏi UI và Component qua EventBus.
 ---
+
+**Thời gian:** 2026-06-19 21:30
+**Phase/Module:** Phase 3 / T-010 NPC Population & Phone UI
+**Thay đổi chính:**
+- Thêm 3 NPC mẫu (Mom, Friend, Shopkeeper) vào `home_village.tscn` với Data Dialogue và Schedule độc lập.
+- Xây dựng Phone UI cơ bản hiển thị danh bạ qua EventBus (`ui_phone_opened`, `phone_contacts_updated`).
+- `NPCManager` trở thành cầu nối duyệt cây lấy danh bạ NPC và tổng hợp điểm Friendship gửi lên giao diện.
+**Known Issues / Handoff Notes:**
+- Danh bạ hiện render cả những NPC chưa bao giờ tương tác (có thể cần ẩn nếu Friendship = 0 trong tương lai).
+---
