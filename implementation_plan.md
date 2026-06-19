@@ -551,26 +551,29 @@ game/
 ### Phase 3: Social Foundation 👥
 > Mục tiêu: NPC sống động, nói chuyện được, tặng quà, bắt đầu xây dựng quan hệ
 
-- [ ] `NPCBase` — NPC đi lại theo lịch trình
-- [ ] Dialogue system — Hội thoại phân nhánh
-- [ ] Relationship system — Friendship points, tặng quà
-- [ ] 5 NPC đầu tiên với personality, schedule, dialogue
-- [ ] Phone system cơ bản — Chat với NPC đã kết bạn
+- [x] `NPCBase` — NPC đi lại theo lịch trình (Đã có base và interactable)
+- [x] Dialogue system — Hội thoại phân nhánh (Đã có UI và Resource data)
+- [x] Relationship system — Friendship points, tặng quà
+- [ ] 5 NPC đầu tiên với personality, schedule, dialogue (Cho City District)
 - [ ] `NeedsManager` update — Social need tăng/giảm
 
-### Phase 4: World Expansion & Activities 🗺️
-> Mục tiêu: Thế giới rộng hơn, nhiều hoạt động hơn
+### Phase 4: Vertical Slice A (City Prologue) 🏙️
+> Mục tiêu: Tạo ra 30 phút gameplay đầu tiên của game. Thiết lập một ngày sinh tồn trong thành phố, vòng lặp kiếm tiền/ăn/ngủ, tương tác cơ bản, và chuyển cảnh (Stargazing) về quá khứ.
 
-- [ ] `SceneManager.gd` — Quản lý chuyển district, lưu trạng thái
-- [ ] `TransitionHandler.gd` — Fade, slide, cutscene transitions
+- [ ] Build Slice District: `city_prologue_district.tscn` (Rộng, có điểm tương tác, chỗ làm việc tạm, chỗ ngủ).
+- [ ] Tích hợp 3-5 NPC vào City Prologue (vd: Boss chỗ làm, Hàng xóm, Cô bán hàng).
+- [ ] Cốt truyện: Inner monologue (nhật ký/suy nghĩ) của nhân vật chính trong ngày đầu tiên.
+- [ ] Hệ thống Làm việc (JobManager cơ bản) -> Mất thời gian, mất Energy, nhận Tiền.
+- [ ] Cấu trúc vòng lặp 1 ngày (One-day loop): Làm việc -> Mua đồ ăn -> Nói chuyện -> Ngủ.
+- [ ] Stargazing Transition: Cutscene/Hiệu ứng lúc nhìn bầu trời đêm -> Kích hoạt chuyển cảnh.
+- [ ] `SceneManager.gd` — Quản lý chuyển cảnh từ City Prologue sang Childhood Chapter (`home_village`).
+
+### Phase 5: World Expansion & Activities 🗺️
+> Mục tiêu: Mở rộng thế giới sau khi Prologue đã ổn định
+- [ ] Hệ thống Phone / Nhắn tin (Chuyển từ Phase 3 xuống)
 - [ ] Build thêm districts: Hometown (home_forest, home_fields)
-- [ ] Build thêm districts: City (city_entertainment, city_harbor)
-- [ ] Hệ thống di chuyển giữa Quê ↔ Thành phố (xe bus cutscene)
-- [ ] Farming system (side activity) — Vườn nhà hoặc trang trại quê
+- [ ] Farming system (side activity)
 - [ ] Fishing system
-- [ ] Thêm jobs Tier 2-3
-- [ ] Skill progression system
-- [ ] Random events system
 - [ ] Weather system + ảnh hưởng gameplay
 
 ### Phase 5: Deep Social & Content ❤️

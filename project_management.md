@@ -237,7 +237,9 @@ TICKET-007 (i18n Setup) ← độc lập, chạy song song bất kỳ lúc nào
 
 | ID | Module | Trạng thái | Ước tính |
 |---|---|---|---|
-| **T-008** | NPCBase & Dialogue System | ⏳ Chờ Agent làm | 2-3 giờ |
+| **T-008** | NPCBase & Dialogue System | ✅ Xong | 2-3 giờ |
+| **T-009** | NPC Relationship & Schedule System | ✅ Xong | 2-3 giờ |
+| **T-010** | City Prologue District & One-Day Loop | ⏳ Chờ Agent làm | 3-4 giờ |
 
 ### Execution order khuyến nghị:
 ```
@@ -248,9 +250,18 @@ Wave 4: T-005 + T-006 (song song, cần T-002/T-003/T-004)
 Any time: T-007
 ```
 
+## 7. MILESTONES CẤP BÁCH — VERTICAL SLICE A
+
+**CẢNH BÁO QUAN TRỌNG:**
+Tuyệt đối **KHÔNG** mở rộng các tính năng ngoài luồng (Quests, Farming, Phone System, v.v.) cho đến khi Vertical Slice A (City Prologue) hoàn thành.
+Ngay khi ticket **T-010** được merge và Vertical Slice A có thể chơi được từ đầu đến cuối (Đi làm -> Ăn -> Ngủ -> Chuyển cảnh):
+👉 **DỪNG LẠI TOÀN BỘ MỌI TÍNH NĂNG MỚI.**
+👉 **YÊU CẦU USER MỞ GAME LÊN TỰ THÂN TRẢI NGHIỆM VÀ REVIEW GAMEPLAY LOOP.**
+Mọi phát triển sau đó chỉ được tiến hành sau khi User xác nhận Core Loop đã "đủ hay".
+
 ---
 
-## 7. ESCALATION POLICY — Khi có vấn đề
+## 8. ESCALATION POLICY — Khi có vấn đề
 
 | Tình huống | Hành động |
 |---|---|
