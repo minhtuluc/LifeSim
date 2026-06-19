@@ -133,3 +133,16 @@
 **Known Issues / Handoff Notes:**
 - Danh bạ hiện render cả những NPC chưa bao giờ tương tác (có thể cần ẩn nếu Friendship = 0 trong tương lai).
 ---
+
+**Thời gian:** 2026-06-19 22:00
+**Phase/Module:** Phase 4 / T-010 City Prologue District & Core Loop
+**Thay đổi chính:**
+- Tạo bản đồ mới `city_prologue_district.tscn` đại diện cho Vertical Slice A.
+- Làm sạch Direct Coupling ở `Bed`, `Workstation`, `VendingMachine` (chỉ dùng EventBus).
+- Nâng cấp `TimeManager`: thêm `advance_time()` và tự động tăng giờ khi nghe tín hiệu Ngủ / Làm việc.
+- Thêm `StargazingSpot` để chuẩn bị trigger chuyển cảnh `scene_transition_requested`.
+- Thêm 3 NPCs: Boss, Neighbor, Clerk.
+**Known Issues / Handoff Notes:**
+- Vending Machine hiện gọi ShopUI nhưng ShopUI chưa có dữ liệu item cứng, có thể hiển thị rỗng.
+- Tính năng chuyển cảnh thực sự chưa có SceneManager xử lý.
+---

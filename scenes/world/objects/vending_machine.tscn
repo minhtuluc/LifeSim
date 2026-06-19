@@ -21,7 +21,7 @@ color = Color(0.8, 0.2, 0.2, 1.0)
 
 [node name="InteractableArea" type="Area2D" parent="."]
 script = ExtResource("2_interactable")
-prompt_text = "Mua đồ (Máy bán hàng)"
+prompt_text = "Mua đồ"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
 shape = SubResource("RectangleShape2D_interact")

@@ -1,0 +1,90 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/world/objects/bed.tscn" id="2_bed"]
+[ext_resource type="PackedScene" path="res://scenes/world/objects/workstation.tscn" id="3_workstation"]
+[ext_resource type="PackedScene" path="res://scenes/world/objects/vending_machine.tscn" id="4_vending_machine"]
+[ext_resource type="PackedScene" path="res://scenes/world/objects/stargazing_spot.tscn" id="5_stargazing"]
+[ext_resource type="PackedScene" path="res://components/day_night_cycle.tscn" id="6_day_night"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc_base.tscn" id="7_npc"]
+[ext_resource type="Script" path="res://scripts/npcs/npc_schedule_component.gd" id="8_schedule_comp"]
+
+[ext_resource type="Resource" path="res://data/dialogues/dialogue_boss.tres" id="11_dlg_boss"]
+[ext_resource type="Resource" path="res://data/dialogues/dialogue_neighbor.tres" id="12_dlg_neighbor"]
+[ext_resource type="Resource" path="res://data/dialogues/dialogue_clerk.tres" id="13_dlg_clerk"]
+[ext_resource type="Resource" path="res://data/npcs/sched_boss.tres" id="14_s_boss"]
+[ext_resource type="Resource" path="res://data/npcs/sched_neighbor.tres" id="15_s_neighbor"]
+[ext_resource type="Resource" path="res://data/npcs/sched_clerk.tres" id="16_s_clerk"]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="20_hud"]
+[ext_resource type="PackedScene" path="res://scenes/ui/inventory_ui.tscn" id="21_inventory"]
+[ext_resource type="PackedScene" path="res://scenes/ui/shop_ui.tscn" id="22_shop"]
+[ext_resource type="PackedScene" path="res://scenes/ui/npc_interaction_menu.tscn" id="23_interaction"]
+[ext_resource type="PackedScene" path="res://scenes/ui/phone_ui.tscn" id="24_phone"]
+
+[node name="CityPrologueDistrict" type="Node2D"]
+
+[node name="Ground" type="ColorRect" parent="."]
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 1000.0
+offset_bottom = 1000.0
+color = Color(0.2, 0.2, 0.2, 1.0)
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+
+[node name="Bed" parent="." instance=ExtResource("2_bed")]
+position = Vector2(100, -100)
+
+[node name="Workstation" parent="." instance=ExtResource("3_workstation")]
+position = Vector2(-100, -100)
+
+[node name="VendingMachine" parent="." instance=ExtResource("4_vending_machine")]
+position = Vector2(0, -200)
+
+[node name="StargazingSpot" parent="." instance=ExtResource("5_stargazing")]
+position = Vector2(200, 0)
+
+[node name="DayNightCycle" parent="." instance=ExtResource("6_day_night")]
+
+[node name="BossNPC" parent="." instance=ExtResource("7_npc")]
+position = Vector2(-150, 0)
+modulate = Color(1, 0, 0, 1)
+npc_id = &"boss"
+dialogue_data = ExtResource("11_dlg_boss")
+
+[node name="NPCScheduleComponent" type="Node" parent="BossNPC"]
+script = ExtResource("8_schedule_comp")
+entries = Array[Resource("res://data/npcs/schedule_entry.gd")]([ExtResource("14_s_boss")])
+
+[node name="NeighborNPC" parent="." instance=ExtResource("7_npc")]
+position = Vector2(-100, 150)
+modulate = Color(0, 1, 0, 1)
+npc_id = &"neighbor"
+dialogue_data = ExtResource("12_dlg_neighbor")
+
+[node name="NPCScheduleComponent" type="Node" parent="NeighborNPC"]
+script = ExtResource("8_schedule_comp")
+entries = Array[Resource("res://data/npcs/schedule_entry.gd")]([ExtResource("15_s_neighbor")])
+
+[node name="ClerkNPC" parent="." instance=ExtResource("7_npc")]
+position = Vector2(50, -200)
+modulate = Color(0, 0, 1, 1)
+npc_id = &"clerk"
+dialogue_data = ExtResource("13_dlg_clerk")
+
+[node name="NPCScheduleComponent" type="Node" parent="ClerkNPC"]
+script = ExtResource("8_schedule_comp")
+entries = Array[Resource("res://data/npcs/schedule_entry.gd")]([ExtResource("16_s_clerk")])
+
+[node name="HUD" parent="." instance=ExtResource("20_hud")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("21_inventory")]
+
+[node name="ShopUI" parent="CanvasLayer" instance=ExtResource("22_shop")]
+
+[node name="NPCInteractionMenu" parent="CanvasLayer" instance=ExtResource("23_interaction")]
+
+[node name="PhoneUI" parent="CanvasLayer" instance=ExtResource("24_phone")]

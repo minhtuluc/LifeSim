@@ -2,10 +2,9 @@ extends Node2D
 
 @onready var interactable_area: InteractableArea = $InteractableArea
 
-@export var items_for_sale: Array[ItemData] = []
-
 func _ready() -> void:
 	interactable_area.interacted.connect(_on_interacted)
 
 func _on_interacted(_user: Node) -> void:
-	EventBus.ui_menu_opened.emit(&"shop_ui")
+	print("Stargazing Transition Triggered -> Hồi tưởng về tuổi thơ")
+	EventBus.scene_transition_requested.emit(&"home_village")

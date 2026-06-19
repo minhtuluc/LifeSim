@@ -17,5 +17,4 @@ func _on_interacted(_user: Node) -> void:
 	if hours_to_skip <= 0:
 		hours_to_skip = 24
 		
-	TimeManager.skip_time(hours_to_skip)
 	EventBus.player_slept.emit(hours_to_skip)

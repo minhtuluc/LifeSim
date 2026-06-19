@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ScheduleEntry" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/npcs/schedule_entry.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+hour = 6
+activity = &"walk"
+target_position = Vector2(0, 0)

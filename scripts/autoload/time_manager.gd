@@ -28,6 +28,8 @@ func _ready() -> void:
 	current_season = start_season
 	EventBus.save_requested.connect(_on_save_requested)
 	EventBus.load_completed.connect(_on_load_completed)
+	EventBus.player_worked.connect(_on_player_worked)
+	EventBus.player_slept.connect(_on_player_slept)
 
 func _on_save_requested(save_data: Dictionary) -> void:
 	save_data["time"] = {
@@ -98,6 +100,13 @@ func pause_time() -> void:
 func resume_time() -> void:
 	_is_paused = false
 
-func skip_time(hours: int) -> void:
+func _on_player_worked(hours: int, _energy_cost: float, _money_earned: int) -> void:
+	advance_time(hours)
+
+func _on_player_slept(hours: int) -> void:
+	advance_time(hours)
+
+func advance_time(hours: int) -> void:
 	for i in range(hours):
 		_advance_hour()
+

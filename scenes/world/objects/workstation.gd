@@ -11,8 +11,4 @@ func _on_interacted(_user: Node) -> void:
 	var energy_cost: float = 25.0
 	var money_earned: int = 80
 	
-	if NeedsManager.energy >= energy_cost:
-		TimeManager.skip_time(hours)
-		EventBus.player_worked.emit(hours, energy_cost, money_earned)
-	else:
-		print("Quá mệt, không thể làm việc!")
+	EventBus.player_worked.emit(hours, energy_cost, money_earned)
