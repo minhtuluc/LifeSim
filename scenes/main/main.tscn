@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://inventoryui123" path="res://scenes/ui/inventory_ui.tscn" id="3_inventory"]
 [ext_resource type="PackedScene" uid="uid://shopui123" path="res://scenes/ui/shop_ui.tscn" id="4_shop"]
 [ext_resource type="PackedScene" path="res://scenes/ui/npc_interaction_menu.tscn" id="5_interaction"]
-
+[ext_resource type="PackedScene" path="res://scenes/ui/phone_ui.tscn" id="6_phone"]
 [node name="Main" type="Node"]
 
 [node name="WorldContainer" type="Node2D" parent="."]
@@ -21,3 +21,5 @@
 [node name="ShopUI" parent="CanvasLayer" instance=ExtResource("4_shop")]
 
 [node name="NPCInteractionMenu" parent="CanvasLayer" instance=ExtResource("5_interaction")]
+
+[node name="PhoneUI" parent="CanvasLayer" instance=ExtResource("6_phone")]

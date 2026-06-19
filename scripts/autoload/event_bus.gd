@@ -56,6 +56,9 @@ signal ui_purchase_requested(item_data: Resource)
 signal ui_dialogue_choice_selected(choice_index: int)
 signal ui_menu_opened(menu_id: StringName)
 signal ui_menu_closed(menu_id: StringName)
+signal ui_phone_opened()
+signal ui_phone_closed()
+signal phone_contacts_updated(contacts_data: Dictionary)
 
 # --- NEEDS ---
 signal needs_updated(need_type: int, new_value: float)

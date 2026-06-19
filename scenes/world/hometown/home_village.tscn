@@ -10,7 +10,14 @@
 [ext_resource type="Script" path="res://scripts/npcs/npc_schedule_component.gd" id="8_schedule_comp"]
 [ext_resource type="Resource" path="res://data/npcs/test_schedule_8.tres" id="9_sched8"]
 [ext_resource type="Resource" path="res://data/npcs/test_schedule_18.tres" id="10_sched18"]
-
+[ext_resource type="Resource" path="res://data/dialogues/dialogue_mom.tres" id="11_dlg_mom"]
+[ext_resource type="Resource" path="res://data/dialogues/dialogue_friend.tres" id="12_dlg_friend"]
+[ext_resource type="Resource" path="res://data/dialogues/dialogue_shopkeeper.tres" id="13_dlg_shop"]
+[ext_resource type="Resource" path="res://data/npcs/sched_mom_6.tres" id="14_s_m_6"]
+[ext_resource type="Resource" path="res://data/npcs/sched_mom_18.tres" id="15_s_m_18"]
+[ext_resource type="Resource" path="res://data/npcs/sched_friend_8.tres" id="16_s_f_8"]
+[ext_resource type="Resource" path="res://data/npcs/sched_friend_16.tres" id="17_s_f_16"]
+[ext_resource type="Resource" path="res://data/npcs/sched_shopkeeper_7.tres" id="18_s_s_7"]
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
 size = Vector2(100, 100)
 
@@ -64,11 +71,32 @@ position = Vector2(0, -150)
 
 [node name="DayNightCycle" parent="." instance=ExtResource("5_day_night")]
 
-[node name="TestNPC" parent="." instance=ExtResource("6_npc")]
-position = Vector2(0, 100)
-npc_id = &"TruongLang"
-dialogue_data = ExtResource("7_dialogue")
+[node name="MomNPC" parent="." instance=ExtResource("6_npc")]
+position = Vector2(100, 100)
+modulate = Color(1, 0, 0, 1)
+npc_id = &"mom"
+dialogue_data = ExtResource("11_dlg_mom")
 
-[node name="NPCScheduleComponent" type="Node" parent="TestNPC"]
+[node name="NPCScheduleComponent" type="Node" parent="MomNPC"]
 script = ExtResource("8_schedule_comp")
-entries = Array[Resource("res://data/npcs/schedule_entry.gd")]([ExtResource("9_sched8"), ExtResource("10_sched18")])
+entries = Array[Resource("res://data/npcs/schedule_entry.gd")]([ExtResource("14_s_m_6"), ExtResource("15_s_m_18")])
+
+[node name="FriendNPC" parent="." instance=ExtResource("6_npc")]
+position = Vector2(50, 50)
+modulate = Color(0, 0, 1, 1)
+npc_id = &"friend"
+dialogue_data = ExtResource("12_dlg_friend")
+
+[node name="NPCScheduleComponent" type="Node" parent="FriendNPC"]
+script = ExtResource("8_schedule_comp")
+entries = Array[Resource("res://data/npcs/schedule_entry.gd")]([ExtResource("16_s_f_8"), ExtResource("17_s_f_16")])
+
+[node name="ShopkeeperNPC" parent="." instance=ExtResource("6_npc")]
+position = Vector2(0, -100)
+modulate = Color(1, 1, 0, 1)
+npc_id = &"shopkeeper"
+dialogue_data = ExtResource("13_dlg_shop")
+
+[node name="NPCScheduleComponent" type="Node" parent="ShopkeeperNPC"]
+script = ExtResource("8_schedule_comp")
+entries = Array[Resource("res://data/npcs/schedule_entry.gd")]([ExtResource("18_s_s_7")])

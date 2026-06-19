@@ -12,6 +12,7 @@ func _ready() -> void:
 	EventBus.save_requested.connect(_on_save_requested)
 	EventBus.load_completed.connect(_on_load_completed)
 	EventBus.time_hour_changed.connect(_on_hour_changed)
+	EventBus.ui_phone_opened.connect(_on_ui_phone_opened)
 
 ## Trả về điểm thân thiết hiện tại của NPC.
 func get_friendship(npc_id: StringName) -> int:
@@ -64,3 +65,24 @@ func _on_load_completed(load_data: Dictionary) -> void:
 				var val: int = f_data[key] as int
 				_npc_friendships[str_key] = val
 				EventBus.npc_friendship_changed.emit(str_key, val, 0)
+
+func _on_ui_phone_opened() -> void:
+	var data: Dictionary = {}
+	var npcs: Array = get_tree().get_nodes_in_group("npcs")
+	for node in npcs:
+		if node and "npc_id" in node:
+			var npc_id: StringName = node.get("npc_id") as StringName
+			if npc_id != &"":
+				var dialogue_data: Resource = node.get("dialogue_data") as Resource
+				var p_name: String = str(npc_id)
+				var portrait: Texture2D = null
+				if dialogue_data:
+					p_name = dialogue_data.get("npc_name") as String
+					portrait = dialogue_data.get("portrait") as Texture2D
+				
+				data[npc_id] = {
+					"name": p_name,
+					"portrait": portrait,
+					"friendship_points": get_friendship(npc_id)
+				}
+	EventBus.phone_contacts_updated.emit(data)
